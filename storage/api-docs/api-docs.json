@@ -1,0 +1,212 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Register and login Api Documentation",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api"
+        }
+    ],
+    "paths": {
+        "/register": {
+            "post": {
+                "tags": [
+                    "register"
+                ],
+                "summary": "register the record",
+                "description": "to register",
+                "operationId": "register",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "phone",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "test5"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "test5@gmail.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "9845345633"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "test5"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "success message",
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "status_code": 200,
+                                    "message": "register has been created successfully.",
+                                    "payload": []
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer_auth": ""
+                    }
+                ]
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "login",
+                "description": "to login",
+                "operationId": "login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "xyz@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "xyz"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "success message",
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "status_code": 200,
+                                    "message": "login has been created successfully.",
+                                    "payload": []
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer_auth": ""
+                    }
+                ]
+            }
+        },
+        "/refresh-token": {
+            "post": {
+                "tags": [
+                    "refresh token"
+                ],
+                "summary": "refresh token",
+                "description": "Get refresh token",
+                "operationId": "refreshToken",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "refresh"
+                                ],
+                                "properties": {
+                                    "refresh": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "..."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer_auth": ""
+                    }
+                ]
+            }
+        },
+        "/get-user": {
+            "get": {
+                "tags": [
+                    "get user"
+                ],
+                "summary": "Get the user",
+                "description": "Get the user",
+                "operationId": "userInfo",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer_auth": ""
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Bearer_auth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
